@@ -1,30 +1,57 @@
 import webview
 from bs4 import BeautifulSoup
+import requests
 
 '''
-To Be..
+Function List..
 
-0. href 제거
-1. ClassName 구분자 추가
-2. id attribute input으로 템플릿 선택 기능 추가
-3. Response 기능 추가로 반환 값을 이용한 Beautifulsoup 데이터 제어 추가
+1. 선택 or id 속성 값 Template화 (완료)
+2. HTML Injection을 이용한 웹 데이터 제어 (완료)
+3. Response 기능 추가로 반환 값을 이용한 Beautifulsoup 데이터 제어 추가 (완료)
+4. href 기능 비활성화 (완료)
+5. ClassName 구분자 추가
 '''
-def IdRun(target):
-    print(target)
+def IdRun(target, select_target):
+    req = requests.get(target)
+    req.encoding = 'utf-8'
+    res = req.text
+
+    soup = BeautifulSoup(res, 'html.parser')
+    try:
+        text = soup.find('div', class_=select_target).attrs
+        GetTemplate(text)
+    except:
+        GetTemplate('Selector is Not Defined...')
 
 def TemplateRun(target):
     window = webview.create_window('Template', target, js_api=api)
-    webview.start(evaluate_js, window)
+    webview.start(HTMLInjection, window)
     Preprocessing(api.pyhtml)
 
 def Preprocessing(html):
     soup = BeautifulSoup(html, 'html.parser')
-    text = soup.find_all('dd', class_='service_data')
-    print(text)
+    try:
+        text = soup.find('div').attrs
+        GetTemplate(text)
+    except:
+        GetTemplate('Selector is Not Defined...')
+    
 
-def evaluate_js(window):
-    window.move(240, 100)
-    window.resize(2000, 1400)
+def GetTemplate(text):
+    if type(text) == str:
+        print(text)
+    elif text.get('id') and text.get('class'):
+        print('id:', text['id'], 'class:', text['class'])
+    elif text.get('id'):
+        print('id:', text['id'])
+    elif text.get('class'):
+        print('class:', text['class'])
+    else:
+        print('Selector is Not Defined...')
+
+def HTMLInjection(window):
+    window.move(200, 100)
+    window.resize(1500, 850)
     result = window.evaluate_js(
         r"""
         var arr = [];
@@ -34,6 +61,7 @@ def evaluate_js(window):
             if (d[i].id != "" && d[i].id != null && d[i].id != "container" && d[i].id != "NM_INT_LEFT" && d[i].parentNode.tagName != "BODY"){
                 arr.push(document.getElementById(d[i].id));
             }
+            // classname을 이용한 div 영역 추출 부분
             //if (d[i].id == "" && d[i].parentNode.tagName != "BODY"){
             //    arr.push(document.getElementsByClassName(d[i].className));
             //}
@@ -72,15 +100,26 @@ class Api:
 0 : Run Template
 1 : input id Attribute
 '''
-def start(num, target):
+def TemplateFunction(num, target, select_target):
     if num == 1:
-        IdRun(target)
+        IdRun(target, select_target)
     else:
         TemplateRun(target)
 
 if __name__ == '__main__':
+    # Webview Setting
     api = Api()
+
+    # Web Site
     # 네이버, 워드프레스, 그누보드, 제로보드
     target_url = ['https://www.naver.com/', 'http://218.146.55.65/wordpress/index.php/about/', \
     'http://218.146.55.65/g5/', 'http://218.146.55.65/xe/']
-    start(0, target_url[0]);
+
+    # Web Site DIV Tag Attribute (id, class)
+    select_target = 'group_title'
+    #select_target = 'a'
+
+    # 0 is Run Webview Template
+    # 1 is Run input id Attribute Template
+    # TemplateFunction(TemplateStyle, SiteURL, IDAttribute)
+    TemplateFunction(0, target_url[0], select_target)
