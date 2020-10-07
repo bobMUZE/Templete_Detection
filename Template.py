@@ -1,4 +1,6 @@
 import webview
+import sys
+import threading
 
 '''
 To Be..
@@ -13,38 +15,44 @@ def IdRun(target):
     print(target)
 
 def TemplateRun(target):
-    window = webview.create_window('Template', target)
-    webview.start(evaluate_js, window, debug=True)
-
-def evaluate_js(window):
-    window.move(240, 100)
-    window.resize(2000, 1400)
-    result = window.evaluate_js(
-        r"""
-        var arr = [];
-        var d = document.getElementsByTagName('div');
-
-        for (var i in d) {
-            if (d[i].id != "" && d[i].id != null && d[i].id != "container" && d[i].id != "NM_INT_LEFT" && d[i].parentNode.tagName != "BODY"){
-                arr.push(document.getElementById(d[i].id));
-            }
-            //if (d[i].id == "" && d[i].parentNode.tagName != "BODY"){
-            //    arr.push(document.getElementsByClassName(d[i].className));
-            //}
-        }
-
-        for (var j in arr) {
-            arr[j].setAttribute("onclick", "template(this)");
-            arr[j].setAttribute("onmouseover", "this.style.backgroundColor=\"rgba(255, 99, 71, 0.7)\"; this.style.borderWidth=\"thick\"; this.style.borderColor=\"rgba(255, 99, 71, 0.7)\"");
-            arr[j].setAttribute("onmouseout", "this.style.backgroundColor=''; this.style.borderWidth=''; this.style.borderColor=''");
-        }
-
-        function template(test) {
-            console.log(test.outerHTML);
-        }
-        """
-    )
+    api = Api()
+    window = webview.create_window('Template', target, js_api=api)
+    webview.start(api.evaluate_js, window, debug=True)
+    #print(sys.stdout)
     #window.destroy()
+
+class Api:
+    def __init__(self):
+        self.cancel_heavy_stuff_flag = False
+
+    def evaluate_js(self, window):
+        window.move(240, 100)
+        window.resize(2000, 1400)
+        result = window.evaluate_js(
+            r"""
+            var arr = [];
+            var d = document.getElementsByTagName('div');
+
+            for (var i in d) {
+                if (d[i].id != "" && d[i].id != null && d[i].id != "container" && d[i].id != "NM_INT_LEFT" && d[i].parentNode.tagName != "BODY"){
+                    arr.push(document.getElementById(d[i].id));
+                }
+                //if (d[i].id == "" && d[i].parentNode.tagName != "BODY"){
+                //    arr.push(document.getElementsByClassName(d[i].className));
+                //}
+            }
+
+            for (var j in arr) {
+                arr[j].setAttribute("onclick", "template(this)");
+                arr[j].setAttribute("onmouseover", "this.style.backgroundColor=\"rgba(255, 99, 71, 0.7)\"; this.style.borderWidth=\"thick\"; this.style.borderColor=\"rgba(255, 99, 71, 0.7)\"");
+                arr[j].setAttribute("onmouseout", "this.style.backgroundColor=''; this.style.borderWidth=''; this.style.borderColor=''");
+            }
+
+            function template(test) {
+                console.log(test.outerHTML);
+            }
+            """
+        )
 
 '''
 0 : Run Template
