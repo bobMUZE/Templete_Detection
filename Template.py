@@ -9,10 +9,9 @@ Function List..
 2. HTML Injection을 이용한 웹 데이터 제어 (완료)
 3. Response 기능 추가로 반환 값을 이용한 Beautifulsoup 데이터 제어 추가 (완료)
 4. href 기능 비활성화 (완료)
-5. ClassName 구분자 추가
 '''
 def IdRun(target, select_target):
-    req = requests.get(target)
+    req = requests.ge
     req.encoding = 'utf-8'
     res = req.text
 
@@ -56,15 +55,15 @@ def HTMLInjection(window):
         r"""
         var arr = [];
         var d = document.getElementsByTagName('div');
+        var div_blacklist = [undefined, null, "", "container", "NM_INT_LEFT"];
+        var ptag_blacklist = [undefined, "BODY"];
 
         for (var i in d) {
-            if (d[i].id != "" && d[i].id != null && d[i].id != "container" && d[i].id != "NM_INT_LEFT" && d[i].parentNode.tagName != "BODY"){
-                arr.push(document.getElementById(d[i].id));
+            if (div_blacklist.indexOf(d[i].id) == -1){
+                if (ptag_blacklist.indexOf(d[i].parentNode.tagName) == -1){
+                    arr.push(document.getElementById(d[i].id));
+                }
             }
-            // classname을 이용한 div 영역 추출 부분
-            //if (d[i].id == "" && d[i].parentNode.tagName != "BODY"){
-            //    arr.push(document.getElementsByClassName(d[i].className));
-            //}
         }
 
         for (var j in arr) {
@@ -90,8 +89,11 @@ class Api:
         self.pyhtml = pyhtml
         self.flag = flag
         if self.flag == 1:
-            self.window.destroy()
-            exit(0)
+            try:
+                self.window.destroy()
+                exit(0)
+            except:
+                exit(0)
             
     def SetDestory(self, window):
         self.window = window
