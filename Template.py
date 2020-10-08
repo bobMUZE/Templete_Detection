@@ -11,7 +11,7 @@ Function List..
 4. href 기능 비활성화 (완료)
 '''
 def IdRun(target, select_target):
-    req = requests.ge
+    req = requests.get(target)
     req.encoding = 'utf-8'
     res = req.text
 
