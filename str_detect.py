@@ -23,16 +23,7 @@ def Search_Re(pattern,search_str):
     m=p.search(search_str)
     mylogger.info(m)
 
-# 로깅 함수
-def Use_Logging(level):
-    mylogger = logging.getLogger("my")
 
-    #로깅 레벨
-    mylogger.setLevel(level)
-    stream_hander = logging.StreamHandler()
-    mylogger.addHandler(stream_hander)
-    mylogger.info("logging start!!!")
-    return mylogger
 
 # 정규표현식 특수문자 적용
 def Apply_Special_Char(detection_char):
@@ -43,6 +34,17 @@ def Apply_Special_Char(detection_char):
         pattern=pattern.replace("\\", "\\\\")
     mylogger.debug(pattern)
     return pattern
+
+# 로깅 함수
+def Use_Logging(level):
+    mylogger = logging.getLogger("my")
+
+    #로깅 레벨
+    mylogger.setLevel(level)
+    stream_hander = logging.StreamHandler()
+    mylogger.addHandler(stream_hander)
+    mylogger.info("logging start!!!")
+    return mylogger
 
 
 def main():

