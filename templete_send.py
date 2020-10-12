@@ -3,7 +3,7 @@ import logging
 DETECT_URL="http://192.168.0.5"
 
 def TempleteSelect():
-    with open("xss.txt","r",encoding="utf-8") as f:
+    with open("templete.txt","r",encoding="utf-8") as f:
         templete=f.read()
         return templete
 
