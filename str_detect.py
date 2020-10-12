@@ -4,7 +4,7 @@ import logging
 # 템플릿 가져오기
 def Select_Templete():
     # xss 문자열 읽기
-    f=open('xss.txt','r',encoding='utf-8')
+    f=open('templete.txt', 'r', encoding='utf-8')
     xss_str=f.read()
     f.close()
     return xss_str
