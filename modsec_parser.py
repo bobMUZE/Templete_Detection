@@ -1,24 +1,45 @@
 import re
+import logging
 
-f= open("modsec_audit.log","r")
-modsec_log = f.read()
-#print(modsec_log)
+def ModsecLogRead(f):
+    modsec_log = f.read()
+    return modsec_log
+    #print(modsec_log)
 
-#정규식
-#p = re.compile('\--\w{8}\-H\--')
-# modsecurity 탐지 파싱 부분 정규식
-p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
+def XSSLog(modsec_log,f):
+    #정규식
+    #p = re.compile('\--\w{8}\-H\--')
+    # modsecurity 탐지 파싱 부분 정규식
+    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
 
-# mod
-m = p.search(modsec_log)
+    # modsecurity xss 공격 탐지 로그 찾기
+    m = p.search(modsec_log)
 
-if m:
-    print("--------------------XSS Attack Detection------------------------")
-    #print(m)
-    #print(m.group())
-    #print(m.start())
-    #print(m.end())
-    #print(m.span())
-    f.seek(m.end())
-    detect_log=f.read()
-    print(detect_log)
+    if m:
+        print("--------------------XSS Attack Detection------------------------")
+        f.seek(m.end())
+        detect_log=f.read()
+        print(detect_log)
+
+# 로깅 함수
+def Use_Logging(level):
+    mylogger = logging.getLogger("my")
+
+    # 로깅 레벨
+    mylogger.setLevel(level)
+    stream_hander = logging.StreamHandler()
+    mylogger.addHandler(stream_hander)
+    mylogger.info("logging start!!!")
+    return mylogger
+
+def main():
+    modsec_file="modsec_audit.log"
+    f = open(modsec_file, "r")
+    modsec_log=ModsecLogRead(f)
+    XSSLog(modsec_log,f)
+
+if __name__ == '__main__':
+    # 로깅 객체 생성
+    mylogger = Use_Logging(logging.INFO)
+    mylogger.debug('test')
+    main()
