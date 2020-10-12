@@ -1,5 +1,6 @@
 import hashlib
 import logging
+import csv
 import urllib
 import urllib.parse
 import requests
@@ -17,6 +18,66 @@ def File_Hash(path):
     f.close()
     return(hashlib.md5(data).hexdigest(),hashlib.sha1(data).hexdigest(),hashlib.sha256(data).hexdigest())
 
+
+
+# 검사되지않은 바이러스 파일인 경우 해시값으로 바이러스 토탈 결과 확인 불가능
+def Virus_Total_Search(file_path):
+    csv_check=False
+    detection_check=False
+
+    file_md5, file_sha1, file_sha_256 = File_Hash(file_path)
+    mylogger.debug("VTS")
+    #md5="2d75cc1bf8e57872781f9cd04a529256"
+    parameters = {'resource': file_md5, 'apikey': VT_API_KEY}
+    #data = urllib.parse.urlencode(parameters)
+    res = requests.get(REPORT_URL, params=parameters)
+    result=res.json()
+    #print(result)
+    mylogger.debug(result['scans'].items())
+
+    for key,value in result['scans'].items():
+        if value['detected']==True:
+            if csv_check==False:
+                #WriteCSV()
+                WriteCSVFirstLine(file_path,file_md5,file_sha1,file_sha_256,key,value["version"],value["result"],value["update"])
+                csv_check=True
+                detection_check=True
+            else:
+                WriteCSV(key,value["version"],value["result"],value["update"])
+    if detection_check==False:
+        NothingDetect(file_path,file_md5,file_sha1,file_sha_256)
+
+
+
+            #print(key,value)
+    #print(json.dumps(result, indent="\t"))
+
+def WriteCSVheader():
+    f = open('output.csv', 'w', encoding='utf-8', newline='')
+    wr = csv.writer(f)
+    wr.writerow(["FilePath","MD5","SHA1","SHA256","Detected","Vaccine","Version","result","update"])
+    f.close()
+
+def NothingDetect(filepath,file_md5,file_sha1,file_sha_256):
+    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    wr = csv.writer(f)
+    wr.writerow([filepath,file_md5,file_sha1,file_sha_256,"Nothing detect"])
+    f.close()
+
+
+
+def WriteCSV(company,version,result,update):
+    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    wr = csv.writer(f)
+    wr.writerow(["","","","","True",company,version,result,update])
+    f.close()
+
+def WriteCSVFirstLine(filepath,file_md5,file_sha1,file_sha_256,company,version,result,update):
+    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    wr = csv.writer(f)
+    wr.writerow([filepath,file_md5,file_sha1,file_sha_256,"True",company,version,result,update])
+    #wr.writerow([2, "박상미", True])
+    f.close()
 # 로깅 함수
 def Use_Logging(level):
     mylogger = logging.getLogger("my")
@@ -28,27 +89,12 @@ def Use_Logging(level):
     mylogger.info("logging start!!!")
     return mylogger
 
-def Virus_Total_Search(md5,sha1,sha256):
-    mylogger.debug("VTS")
-    #md5="2d75cc1bf8e57872781f9cd04a529256"
-    parameters = {'resource': md5, 'apikey': VT_API_KEY}
-    #data = urllib.parse.urlencode(parameters)
-    res = requests.get(REPORT_URL, params=parameters)
-    result=res.json()
-    mylogger.debug(result['scans'].items())
-    for key,value in result['scans'].items():
-        print(key)
-    #print(json.dumps(result, indent="\t"))
-
-
 def main():
-    file_path="C:\\tool\\chromecacheview_1.77\\ChromeCacheView.exe"
-    file_md5, file_sha1 ,file_sha_256 = File_Hash(file_path)
-    mylogger.debug("MD5: " + file_md5)
-    mylogger.debug("SHA-1: " + file_sha1)
-    mylogger.debug("SHA-256: " + file_sha_256)
-
-    Virus_Total_Search(file_md5,file_sha1,file_sha_256)
+    file_path1 = "C:\\recent_programing\\MUZE\\mal-test"
+    file_path2 = "C:\\tool\\chromecacheview_1.77\\ChromeCacheView.exe"
+    WriteCSVheader()
+    Virus_Total_Search(file_path1)
+    Virus_Total_Search(file_path2)
 
 if __name__ == '__main__':
     #로깅 객체 생성

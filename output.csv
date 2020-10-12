@@ -1,0 +1,37 @@
+FilePath,MD5,SHA1,SHA256,Detected,Vaccine,Version,result,update
+C:\recent_programing\MUZE\mal-test,dc98e2778a7cba221a78a00c0090e408,b79ce6204d644e5480c96a5587a0fdf3d200b6d1,d7e7fd382d2e33f284b1262f04e72119bce9e35f8814b8612afe14fc15169599,True,ClamAV,0.102.3.0,Win.Trojan.Elpapok-1,20201012
+,,,,True,CAT-QuickHeal,14.00,Exp.Shell.Gen.CV,20201012
+,,,,True,McAfee,6.0.6.653,Exploit-CVE2012-0158.d,20201012
+,,,,True,Sangfor,1.0,Malware,20200814
+,,,,True,TrendMicro,11.0.0.1006,EXPL_CVE20120158,20201012
+,,,,True,Baidu,1.0.0.2,Win32.Exploit.CVE-2012-0158.f,20190318
+,,,,True,Cyren,6.3.0.2,CVE-2012-0158!Camelot,20201012
+,,,,True,TrendMicro-HouseCall,10.0.0.1040,Mal_EXPLOITEDRTF01,20201012
+,,,,True,Avast,18.4.3895.0,MO97:ShellCode-BA [Expl],20201012
+,,,,True,Cynet,4.0.0.24,Malicious (score: 85),20201012
+,,,,True,Kaspersky,15.0.1.13,Exploit.Win32.CVE-2012-0158.j,20201012
+,,,,True,BitDefender,7.2,Trojan.Script.8159,20201012
+,,,,True,NANO-Antivirus,1.0.134.25169,Exploit.ComObj.CVE-2012-0158.hzuf,20201012
+,,,,True,MicroWorld-eScan,14.0.409.0,Trojan.Script.8159,20201012
+,,,,True,Ad-Aware,3.0.16.117,Trojan.Script.8159,20201012
+,,,,True,F-Secure,12.0.86.52,Exploit.EXP/CVE-2012-0158,20201012
+,,,,True,DrWeb,7.0.49.9080,Exploit.CVE-2012-0158.135,20201012
+,,,,True,McAfee-GW-Edition,v2019.1.2+3728,Exploit-CVE2012-0158.d,20201011
+,,,,True,FireEye,32.36.1.0,Trojan.Script.8159,20201012
+,,,,True,Emsisoft,2018.12.0.1641,Trojan.Script.8159 (B),20201012
+,,,,True,Ikarus,0.1.5.2,Exploit.Win32.CVE-2012-0158,20201012
+,,,,True,Avira,8.3.3.8,EXP/CVE-2012-0158,20201012
+,,,,True,Antiy-AVL,3.0.0.1,Trojan[Exploit]/Office.CVE-2012-0158,20201012
+,,,,True,Microsoft,1.1.17500.4,Exploit:Win32/CVE-2012-0158.CJ,20201012
+,,,,True,Arcabit,1.0.0.881,Trojan.Script.D1FDF,20201012
+,,,,True,ZoneAlarm,1.0,HEUR:Exploit.MSWord.Generic,20201012
+,,,,True,GData,A:25.27331B:27.20493,Trojan.Script.8159,20201012
+,,,,True,AhnLab-V3,3.18.2.10046,RTF/Exploit,20201012
+,,,,True,ALYac,1.1.1.5,Trojan.Script.8159,20201012
+,,,,True,MAX,2019.9.16.1,malware (ai score=81),20201012
+,,,,True,Rising,25.0.0.26,Attention.APT-Bait.ContainShellCode!1.9E28 (CLASSIC),20201012
+,,,,True,Yandex,5.5.2.24,Exploit.CVE-2012-0158.Gen,20201008
+,,,,True,Fortinet,6.2.142.0,MSOffice/CVE20120158.fam!exploit,20201012
+,,,,True,AVG,18.4.3895.0,MO97:ShellCode-BA [Expl],20201012
+,,,,True,Qihoo-360,1.0.0.1120,virus.exp.20144114,20201012
+C:\tool\chromecacheview_1.77\ChromeCacheView.exe,89505b304d16d7e737753898845d19f1,5961a1c70b17c10001a7c1a9bcfee4cb834e1dd6,51f7b81bef001cf8859a437c5e8b06efb234709bb310736e8ad4948009ff7966,Nothing detect
