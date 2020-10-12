@@ -1,0 +1,4 @@
+<div class="kboard-content" itemprop="description">
+				<div class="content-view">
+										<script>alert(document. cookie);</script>				</div>
+			</div>
