@@ -1,11 +1,8 @@
 import hashlib
 import logging
 import csv
-import urllib
-import urllib.parse
 import requests
-import json
-import time
+
 
 #바이러스 토탈 API 키
 VT_API_KEY="d10a8c46db26f4e642caaa3b248efaf57c99da1022c0c748480bf16ebd680d24"
@@ -26,26 +23,30 @@ def Virus_Total_Search(file_path):
     detection_check=False
 
     file_md5, file_sha1, file_sha_256 = File_Hash(file_path)
-    mylogger.debug("VTS")
+    #mylogger.debug("VTS")
     #md5="2d75cc1bf8e57872781f9cd04a529256"
     parameters = {'resource': file_md5, 'apikey': VT_API_KEY}
     #data = urllib.parse.urlencode(parameters)
     res = requests.get(REPORT_URL, params=parameters)
     result=res.json()
     #print(result)
-    mylogger.debug(result['scans'].items())
-
+    #mylogger.debug(result['scans'].items())
+    print (file_path)
     for key,value in result['scans'].items():
         if value['detected']==True:
             if csv_check==False:
                 #WriteCSV()
+
+                #mylogger.info(key,value)
                 WriteCSVFirstLine(file_path,file_md5,file_sha1,file_sha_256,key,value["version"],value["result"],value["update"])
                 csv_check=True
                 detection_check=True
             else:
                 WriteCSV(key,value["version"],value["result"],value["update"])
+            print(key, value)
     if detection_check==False:
         NothingDetect(file_path,file_md5,file_sha1,file_sha_256)
+        print("Nothing detect")
 
 
 
