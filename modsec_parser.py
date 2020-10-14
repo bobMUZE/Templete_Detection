@@ -6,18 +6,23 @@ def ModsecLogRead(f):
     return modsec_log
     #print(modsec_log)
 
+
 def XSSLog(modsec_log,f):
     #정규식
     #p = re.compile('\--\w{8}\-H\--')
     # modsecurity 탐지 파싱 부분 정규식
     p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
+    xss_log=p.findall(modsec_log)
 
+    #최신 XSS 로그 찾기
+    latest_xss_log=xss_log[-1]
+    log_offset = modsec_log.find(latest_xss_log)
     # modsecurity xss 공격 탐지 로그 찾기
     m = p.search(modsec_log)
 
     if m:
         print("--------------------XSS Attack Detection------------------------")
-        f.seek(m.end())
+        f.seek(log_offset)
         detect_log=f.read()
         print(detect_log)
 

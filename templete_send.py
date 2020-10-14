@@ -56,10 +56,10 @@ def main():
     templete=TempleteSelect()
     TempleteSend(templete)
 
-    modsec_file="modsec_audit.log"
-    f = open(modsec_file, "r")
-    modsec_log=ModsecLogRead(f)
-    XSSLog(modsec_log,f)
+    #modsec_file="modsec_audit.log"
+    #f = open(modsec_file, "r")
+    #modsec_log=ModsecLogRead(f)
+    #XSSLog(modsec_log,f)
 if __name__ == '__main__':
     # 로깅 객체 생성
     mylogger = Use_Logging(logging.INFO)
