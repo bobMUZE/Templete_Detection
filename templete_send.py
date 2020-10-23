@@ -35,6 +35,7 @@ def TempleteSelect():
 
 def TempleteSend(templete):
     #templete="test"
+    mylogger.info("Send Templete!!!")
     params={"templete":templete}
     #url=DETECT_URL+templete
     response = requests.get(DETECT_URL,params=params)

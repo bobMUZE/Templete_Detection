@@ -1,29 +1,34 @@
-import re
+import socket
 import logging
-PATTERN_LIST=[
-    "(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)",
-]
-# 템플릿 가져오기
-def Select_Templete():
-    # xss 문자열 읽기
-    f=open('templete.txt', 'r', encoding='utf-8')
-    xss_str=f.read()
-    f.close()
-    return xss_str
+import re
 
-# 개행문자 제거
-def Newline_Space_Remove(template_str):
-    #template_str = template_str.replace("\n", "")
-    #template_str = template_str.replace("\t", "")
-    #template_str = template_str.replace(" ", "")
-    return template_str
+
+def TempleteReceive(conn):
+    templete_as_bytes = conn.recv(1024)
+
+    #TCP 전송시 byte형태로 전송됨으로 str로 convert
+    templete=templete_as_bytes.decode()
+    print(templete)
+    conn.close()
+    return templete
+
+def SocketConnect():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((ServerHost, PORT))
+    s.listen(2)
+    conn, addr = s.accept()
+    #mylogger.info(addr, "Now Connected")
+    # 접속 알람
+    print(addr, "Now Connected")
+
+    # 접속 확인 메시지 전송
+    conn.send(b"Thank you for connecting")
+    return conn
 
 # 정규표현식을 활용한 문자열 검색
 def Search_Re(pattern,search_str):
     mylogger.debug(pattern)
-    pattern="(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)"
-    #p = re.compile(pattern,re.I)
-    p = re.compile(pattern)
+    p = re.compile(pattern,re.I)
     m=p.search(search_str)
     mylogger.info(m)
 
@@ -43,24 +48,24 @@ def Apply_Special_Char(detection_char):
 def Use_Logging(level):
     mylogger = logging.getLogger("my")
 
-    #로깅 레벨
+    # 로깅 레벨
     mylogger.setLevel(level)
     stream_hander = logging.StreamHandler()
     mylogger.addHandler(stream_hander)
     mylogger.info("logging start!!!")
     return mylogger
 
-
 def main():
-    # 정규표현식 패턴
     detection_char = 'document.cookie'
-    search_string = Select_Templete()
-    search_string=Newline_Space_Remove(search_string)
+    conn=SocketConnect()
+    templete=TempleteReceive(conn)
     pattern=Apply_Special_Char(detection_char)
-    re_result=Search_Re(pattern,search_string)
+    re_result=Search_Re(pattern,templete)
 
 if __name__ == '__main__':
-    #로깅 객체 생성
-    mylogger=Use_Logging(logging.INFO)
+    ServerHost = "192.168.0.13"
+    PORT = 12345
+    # 로깅 객체 생성
+    mylogger = Use_Logging(logging.INFO)
     mylogger.debug('test')
     main()

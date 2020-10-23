@@ -31,7 +31,7 @@ def Search(dirname):
         pass
 
 def RuleWrite(rule):
-    with open("my.rules","a") as f:
+    with open("snort_xss.rules","a") as f:
         f.writelines(rule)
 rule_path="C:/recent_programing/MUZE/snort-rules-master/snortrules-snapshot-3000"
 Search(rule_path)
