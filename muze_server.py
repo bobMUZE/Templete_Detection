@@ -2,13 +2,17 @@ import socket
 import logging
 import re
 
+PATTERN_LIST=[
+    "(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)",
+    "document.cookie",
+]
 
 def TempleteReceive(conn):
     templete_as_bytes = conn.recv(1024)
 
     #TCP 전송시 byte형태로 전송됨으로 str로 convert
     templete=templete_as_bytes.decode()
-    print(templete)
+    mylogger.debug(templete)
     conn.close()
     return templete
 
@@ -19,18 +23,23 @@ def SocketConnect():
     conn, addr = s.accept()
     #mylogger.info(addr, "Now Connected")
     # 접속 알람
-    print(addr, "Now Connected")
+    mylogger.debug(str(addr)+ " Now Connected")
 
     # 접속 확인 메시지 전송
     conn.send(b"Thank you for connecting")
     return conn
 
 # 정규표현식을 활용한 문자열 검색
-def Search_Re(pattern,search_str):
-    mylogger.debug(pattern)
-    p = re.compile(pattern,re.I)
-    m=p.search(search_str)
-    mylogger.info(m)
+def Search_Re(pattern_list,search_str):
+    mylogger.debug(pattern_list)
+
+    for pattern in pattern_list:
+        #mylogger.info(pattern)
+        p = re.compile(pattern)
+        m=p.search(search_str)
+        mylogger.info(m)
+        mylogger.info("find signaure : "+m.group())
+        mylogger.info("find text : " + search_str[m.start()-20:m.end()+20])
 
 
 
@@ -56,11 +65,10 @@ def Use_Logging(level):
     return mylogger
 
 def main():
-    detection_char = 'document.cookie'
     conn=SocketConnect()
     templete=TempleteReceive(conn)
-    pattern=Apply_Special_Char(detection_char)
-    re_result=Search_Re(pattern,templete)
+    #pattern=Apply_Special_Char(detection_char)
+    re_result=Search_Re(PATTERN_LIST,templete)
 
 if __name__ == '__main__':
     ServerHost = "192.168.0.13"
