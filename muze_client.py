@@ -48,7 +48,7 @@ def main():
     #modsec_log=ModsecLogRead(f)
     #XSSLog(modsec_log,f)
 if __name__ == '__main__':
-    ServerHost = "192.168.0.13"
+    ServerHost = "192.168.0.181"
     PORT = 12345
     # 로깅 객체 생성
     mylogger = Use_Logging(logging.INFO)

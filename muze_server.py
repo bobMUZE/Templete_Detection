@@ -3,8 +3,13 @@ import logging
 import re
 
 PATTERN_LIST=[
-    "(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)",
-    "document.cookie",
+    #[1,2,3] = 클수록  위험
+    "(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)", #3
+    "(?i)(j[\s]*a[\s]*v[\s]*a[\s]*s[\s]*c[\s]*r[\s]*i[\s]*p[\s]*t:[^>＞]*[>＞][\s\S]*?)", #2
+    "(?i)(document[\s]*.[\s]*cookie)", #2
+    "&#0000106|&#0000097|&#0000118|&#0000097|&#0000115|&#0000099|&#0000114|&#0000105|&#0000112|&#0000116|&#0000058|&#0000097|&#0000108|&#0000101|&#0000114|&#0000116|&#0000040|&#0000039|&#0000088|&#0000083|&#0000083|&#0000039|&#0000041",#2
+    "&#106;|&#97;|&#118;|&#97;|&#115;|&#99;|&#114;|&#105;|&#112;|&#116;|&#58;|&#97;|&#108;|&#101;|&#114;|&#116;|&#40;|&#39;|&#88;|&#83;|&#83;|&#39;|&#41;",#2
+    "&#x6A|&#x61|&#x76|&#x61|&#x73|&#x63|&#x72|&#x69|&#x70|&#x74|&#x3A|&#x61|&#x6C|&#x65|&#x72|&#x74|&#x28|&#x27|&#x58|&#x53|&#x53|&#x27|&#x29",#2
 ]
 
 def TempleteReceive(conn):
@@ -37,9 +42,10 @@ def Search_Re(pattern_list,search_str):
         #mylogger.info(pattern)
         p = re.compile(pattern)
         m=p.search(search_str)
-        mylogger.info(m)
-        mylogger.info("find signaure : "+m.group())
-        mylogger.info("find text : " + search_str[m.start()-20:m.end()+20])
+        if m:
+            mylogger.info(m)
+            mylogger.info("find signaure : "+m.group())
+            mylogger.info("find text : " + search_str[m.start()-20:m.end()+20])
 
 
 
@@ -71,7 +77,7 @@ def main():
     re_result=Search_Re(PATTERN_LIST,templete)
 
 if __name__ == '__main__':
-    ServerHost = "192.168.0.13"
+    ServerHost = "192.168.0.181"
     PORT = 12345
     # 로깅 객체 생성
     mylogger = Use_Logging(logging.INFO)
