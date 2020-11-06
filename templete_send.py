@@ -2,7 +2,7 @@ import requests
 import logging
 import re
 
-DETECT_URL="http://172.30.1.31"
+DETECT_URL="http://192.168.0.5"
 
 def ModsecLogRead(f):
     modsec_log = f.read()
