@@ -3,6 +3,7 @@ import logging
 import re
 
 PATTERN_LIST=[
+    "(?i)([<＜](xss|a))[\s\S]*?onactivate[\s\S]*?[>＞]"
     #[1,2,3] = 클수록  위험
     "(?i)([<＜]script[^>＞]*[>＞][\s\S]*?)", #3
     "(?i)(j[\s]*a[\s]*v[\s]*a[\s]*s[\s]*c[\s]*r[\s]*i[\s]*p[\s]*t:[^>＞]*[>＞][\s\S]*?)", #2
