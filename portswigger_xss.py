@@ -1,3 +1,4 @@
+# XSS 공격 txt파일로 저장
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
