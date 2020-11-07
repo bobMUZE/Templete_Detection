@@ -32,9 +32,27 @@ def MakeRegex():
     yield regex
 
 def main():
-    for i in MakeRegex():
-        print(i)
-        break
+    rule_id=111111111
+    with open("MY-XSS.conf","w",encoding='utf-8') as f:
+        for i in MakeRegex():
+            #print(i)
+            matched_data="%{TX.0}"
+            matched_var_name="%{MATCHED_VAR_NAME}"
+            matched_var="%{MATCHED_VAR}"
+            secRule=f'''SecRule REQUEST_COOKIES|!REQUEST_COOKIES:/__utm/|REQUEST_COOKIES_NAMES|REQUEST_HEADERS:User-Agent|REQUEST_HEADERS:Referer|ARGS_NAMES|ARGS|XML:/* "{i}" \\
+"msg:'NoScript XSS InjectionChecker: HTML Injection',\\
+id:{rule_id},\\
+severity:'CRITICAL',\\
+phase:request,\\
+t:none,t:utf8toUnicode,t:urlDecodeUni,t:htmlEntityDecode,t:jsDecode,t:cssDecode,t:removeNulls,\\
+tag:'attack-xss',\\
+logdata:'Matched Data: {matched_data} found within {matched_var_name}: {matched_var}'
+'''
+            print(secRule)
+            f.write(secRule)
+            f.write("\n")
+            rule_id+=1
+
 
 if __name__ == '__main__':
     main()
