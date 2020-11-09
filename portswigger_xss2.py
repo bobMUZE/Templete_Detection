@@ -14,7 +14,7 @@ not_requires = driver.find_elements_by_css_selector('body > section.maincontaine
 
 #requires = driver.find_elements_by_css_selector('body > section.maincontainer > div > details.xss-cheat-sheet-container-eventhandlers > div > \
 #                                            details:nth-child(3) > div > details')
-file_name="not_require.csv"
+file_name= "csv/not_require.csv"
 #file_name="require.csv"
 f = open(file_name, 'w', encoding='utf-8', newline='')
 wr = csv.writer(f)

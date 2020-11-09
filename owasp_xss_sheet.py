@@ -14,7 +14,7 @@ soup = BeautifulSoup(html, 'html.parser')
 codes = soup.select(
     'code'
     )
-with open("xss_attack.txt","a",encoding='utf-8') as f:
+with open("txt/xss_attack.txt", "a", encoding='utf-8') as f:
 
     for code in codes:
         f.write(code.text+"\n")

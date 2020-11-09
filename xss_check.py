@@ -25,7 +25,7 @@ def ModsecLogRead(f):
 
 
 def XSSAtackRead():
-    with open("xss_attack.txt","r",encoding="utf-8") as f:
+    with open("txt/xss_attack.txt", "r", encoding="utf-8") as f:
         xss_attacks=f.readlines()
         #print(xss_attacks)
         return xss_attacks
@@ -51,7 +51,7 @@ def XSSLog(modsec_log,f):
         print("------------------------ No XSS Attack -------------------------")
 
 def TempleteSelect():
-    with open("templete.txt","r",encoding="utf-8") as f:
+    with open("txt/templete.txt", "r", encoding="utf-8") as f:
         templete=f.read()
         return templete
 

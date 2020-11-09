@@ -12,7 +12,7 @@ driver.get(PortSwigger_URL)
 not_requires = driver.find_elements_by_css_selector('body > section.maincontainer > div > details.xss-cheat-sheet-container-eventhandlers > div > \
                                             details:nth-child(3) > div > details')
 
-with open("tag_event.txt","a",encoding="utf-8") as f:
+with open("txt/tag_event.txt", "a", encoding="utf-8") as f:
     f.write("1")
     for i in not_requires:
         options=i.find_elements_by_tag_name("option")

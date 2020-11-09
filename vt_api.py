@@ -54,13 +54,13 @@ def Virus_Total_Search(file_path):
     #print(json.dumps(result, indent="\t"))
 
 def WriteCSVheader():
-    f = open('output.csv', 'w', encoding='utf-8', newline='')
+    f = open('csv/output.csv', 'w', encoding='utf-8', newline='')
     wr = csv.writer(f)
     wr.writerow(["FilePath","MD5","SHA1","SHA256","Detected","Vaccine","Version","result","update"])
     f.close()
 
 def NothingDetect(filepath,file_md5,file_sha1,file_sha_256):
-    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    f = open('csv/output.csv', 'a', encoding='utf-8', newline='')
     wr = csv.writer(f)
     wr.writerow([filepath,file_md5,file_sha1,file_sha_256,"Nothing detect"])
     f.close()
@@ -68,13 +68,13 @@ def NothingDetect(filepath,file_md5,file_sha1,file_sha_256):
 
 
 def WriteCSV(company,version,result,update):
-    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    f = open('csv/output.csv', 'a', encoding='utf-8', newline='')
     wr = csv.writer(f)
     wr.writerow(["","","","","True",company,version,result,update])
     f.close()
 
 def WriteCSVFirstLine(filepath,file_md5,file_sha1,file_sha_256,company,version,result,update):
-    f = open('output.csv', 'a', encoding='utf-8', newline='')
+    f = open('csv/output.csv', 'a', encoding='utf-8', newline='')
     wr = csv.writer(f)
     wr.writerow([filepath,file_md5,file_sha1,file_sha_256,"True",company,version,result,update])
     #wr.writerow([2, "박상미", True])

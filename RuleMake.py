@@ -1,6 +1,7 @@
 import csv
 #file_name="not_require.csv"
-file_name="require.csv"
+#file_name="require.csv"
+file_name= "csv/total.csv"
 def MakeRegex():
     "(?i)([<＜](xss|a) -)[\s\S]*?onactivate[\s\S]*?[>＞]"
     f = open(file_name, 'r', encoding='utf-8')
@@ -33,7 +34,7 @@ def MakeRegex():
 
 def main():
     rule_id=111111111
-    with open("MY-XSS.conf","w",encoding='utf-8') as f:
+    with open("rule/MY-XSS.conf", "w", encoding='utf-8') as f:
         for i in MakeRegex():
             #print(i)
             matched_data="%{TX.0}"

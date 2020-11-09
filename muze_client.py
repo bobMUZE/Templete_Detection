@@ -22,7 +22,7 @@ def TempleteSend(sock,templete):
     return
 
 def TempleteSelect():
-    with open("templete.txt","r",encoding="utf-8") as f:
+    with open("txt/templete.txt", "r", encoding="utf-8") as f:
         templete=f.read()
         return templete
 
