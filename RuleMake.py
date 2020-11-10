@@ -34,7 +34,7 @@ def MakeRegex():
 
 def main():
     rule_id=111111111
-    with open("rule/MY-XSS.conf", "w", encoding='utf-8') as f:
+    with open("rule/event-handle.conf", "w", encoding='utf-8') as f:
         for i in MakeRegex():
             #print(i)
             matched_data="%{TX.0}"
@@ -44,6 +44,7 @@ def main():
 "msg:'NoScript XSS InjectionChecker: HTML Injection',\\
 id:{rule_id},\\
 severity:'CRITICAL',\\
+capture,\\
 phase:request,\\
 t:none,t:utf8toUnicode,t:urlDecodeUni,t:htmlEntityDecode,t:jsDecode,t:cssDecode,t:removeNulls,\\
 tag:'attack-xss',\\
