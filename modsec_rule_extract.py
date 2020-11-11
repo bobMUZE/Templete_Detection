@@ -34,7 +34,7 @@ def Search(dirname):
         pass
 
 def RuleWrite(rule):
-    with open(output_file,"a") as f:
+    with open(output_file,"a",encoding="utf-8") as f:
         f.writelines(rule)
 
 rule_path="C:\\Users\\Administrator\\Documents\\GitHub\\Templete_Detection\\modsec_xss"

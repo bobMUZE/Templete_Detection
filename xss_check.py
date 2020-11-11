@@ -2,8 +2,9 @@ import requests
 import logging
 import re
 
-DETECT_URL="http://172.30.1.31"
-MODSEC_FILE="modsec_audit.log"
+MY_DETECT_URL="http://192.168.0.5"
+DETECT_URL="http://192.168.0.12"
+MODSEC_FILE="/var/log/apache2/modsec_audit.log"
 def LastLogFind():
 
     with open(MODSEC_FILE,"r",encoding="utf-8") as f:
@@ -25,7 +26,7 @@ def ModsecLogRead(f):
 
 
 def XSSAtackRead():
-    with open("txt/xss_attack.txt", "r", encoding="utf-8") as f:
+    with open("xss_attack.txt", "r", encoding="utf-8") as f:
         xss_attacks=f.readlines()
         #print(xss_attacks)
         return xss_attacks
@@ -59,14 +60,25 @@ def AttackSend(attacks,last_sig):
     for attack in attacks:
         params = {"attack": attack}
         response = requests.get(DETECT_URL, params=params)
-        mylogger.debug(response.text)
+        response = requests.get(MY_DETECT_URL, params=params)
+        #mylogger.debug(response.text)
         recent_sig=LastLogFind()
         if last_sig==recent_sig:
             print("No Detection")
+            #f.write(attack)
+            print(last_sig,recent_sig)
+
+            mylogger.debug(attack)
+
+            break
         else:
             print("Detection")
-        mylogger.debug(attack)
-        return
+            print(last_sig,recent_sig)
+            last_sig=recent_sig
+            mylogger.debug(attack)
+            #last_sig=recent_sig
+        #return
+
 
 # 로깅 함수
 def Use_Logging(level):

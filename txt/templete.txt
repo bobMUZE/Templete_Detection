@@ -1,2 +1,1 @@
-<textarea onauxclick=alert(1)>XSS</textarea>
-asdssd
+SRC=
