@@ -23,8 +23,45 @@ def XSSLog(modsec_log,f):
     if m:
         print("--------------------XSS Attack Detection------------------------")
         f.seek(log_offset)
-        detect_log=f.read()
-        print(detect_log)
+        recent_log=f.read()
+        return(recent_log)
+    else:
+        return 0
+
+
+
+def Find_Message_Column(recentLog):
+    messageColumnRe = "Message: Warning. Pattern match [\s\S]*?[\\n]"
+    p = re.compile(messageColumnRe)
+    messages = p.findall(recentLog)
+    return messages
+
+def Find_Matched_Pattrn(message):
+    matchedPatternRe="Pattern match \"[\s\S]*?\" at ARGS:"
+    p = re.compile(matchedPatternRe)
+    matchedPattern = p.findall(message)
+    return matchedPattern[0][15:-10]
+
+def Find_Matched_Data(message):
+    matchedDataRe="\\[data \"Matched Data: [\s\S]*?found within ARGS:"
+    #print(matchedDataRe)
+    p = re.compile(matchedDataRe)
+    matchedData = p.findall(message)
+    #print(matchedData[0])
+    return matchedData[0][21:-19]
+
+def Find_Matched_Info(recentLog):
+    messages=Find_Message_Column(recentLog)
+    result={}
+    for message in messages:
+        matchedPattern=Find_Matched_Pattrn(message)
+        matchedData=Find_Matched_Data(message)
+        #print(message)
+        #print(matchedPattern,"--:--",matchedData)
+        result[matchedPattern]=matchedData
+    return result
+
+
 
 # 로깅 함수
 def Use_Logging(level):
@@ -41,7 +78,12 @@ def main():
     modsec_file="modsec_audit.log"
     f = open(modsec_file, "r")
     modsec_log=ModsecLogRead(f)
-    XSSLog(modsec_log,f)
+    recentLog=XSSLog(modsec_log,f)
+    print(recentLog)
+    if recentLog!=0:
+        rule_and_string=Find_Matched_Info(recentLog)
+        print(rule_and_string)
+
 
 if __name__ == '__main__':
     # 로깅 객체 생성

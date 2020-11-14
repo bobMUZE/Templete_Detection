@@ -21,7 +21,11 @@ def MakeRegex():
         if event_check!=event:
             if tag_or[0]=="|":
                 tag_or=tag_or[1:]
-            regex=f"(?i)([<＜]({tag_or})[ /])[\s\S]*?({event_check})[\s\S]*?[>＞]"
+
+            #regex=f"(?i)([<＜]({tag_or})[ /])[\s\S]*?({event_check})[\s\S]*?[>＞]"
+            regex = f"(?i)([ <＜]({tag_or})[\s *?\ /])[\s\S] * ?({event_check})[\s\S] * ?[ >＞]"
+            #print(regex)
+            #return
             event_check=event
             tag_or = tag
             yield regex
