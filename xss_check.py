@@ -5,6 +5,7 @@ import re
 MY_DETECT_URL="http://192.168.0.5"
 DETECT_URL="http://192.168.0.12"
 MODSEC_FILE="/var/log/apache2/modsec_audit.log"
+
 def LastLogFind():
 
     with open(MODSEC_FILE,"r",encoding="utf-8") as f:
@@ -32,24 +33,6 @@ def XSSAtackRead():
         return xss_attacks
 
 
-
-def XSSLog(modsec_log,f):
-    #정규식
-    #p = re.compile('\--\w{8}\-H\--')
-    # modsecurity 탐지 파싱 부분 정규식
-    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
-
-    # modsecurity xss 공격 탐지 로그 찾기
-    m = p.search(modsec_log)
-
-    if m:
-        print("--------------------XSS Attack Detection------------------------")
-        f.seek(m.end())
-        detect_log=f.read()
-        print(detect_log)
-
-    else:
-        print("------------------------ No XSS Attack -------------------------")
 
 def TempleteSelect():
     with open("txt/templete.txt", "r", encoding="utf-8") as f:

@@ -1,0 +1,21 @@
+{
+    "time": "1605365247.624045",
+    "url": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "Dtection": true,
+    "log": [
+        {
+            "submodule": "(?i)([<\\xef\\xbc\\x9c]script[^>\\xef\\xbc\\x9e]*[>\\xef\\xbc\\x9e][\\\\s\\\\S]*?)",
+            "detection value": "<script>",
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": "--2259ed76-H--"
+        },
+        {
+            "submodule": "(?i)<[^\\\\w<>]*(?:[^<>\\\"'\\\\s]*:)?[^\\\\w<>]*(?:\\\\W*?s\\\\W*?c\\\\W*?r\\\\W*?i\\\\W*?p\\\\W*?t|\\\\W*?f\\\\W*?o\\\\W*?r\\\\W*?m|\\\\W*?s\\\\W*?t\\\\W*?y\\\\W*?l\\\\W*?e|\\\\W*?s\\\\W*?v\\\\W*?g|\\\\W*?m\\\\W*?a\\\\W*?r\\\\W*?q\\\\W*?u\\\\W*?e\\\\W*?e|(?:\\\\W*?l\\\\W*?i\\\\W*?n\\\\W*?k|\\\\W*?o\\\\W*?b\\\\W*?j\\\\W*?e\\ ...",
+            "detection value": "<script",
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": "--2259ed76-H--"
+        }
+    ]
+}
