@@ -34,7 +34,7 @@ def TempleteSelect():
         templete=f.read()
         return templete
 
-
+##
 def TempleteSend(templete):
     #templete="test"
     mylogger.info("Send Templete!!!")
