@@ -3,6 +3,20 @@
     "url": "http://3.131.17.188/g5",
     "module": "XSS_Detection_Server",
     "xpath": "//*[@id=\"hd\"]",
+    "Dtection": false,
+    "log": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "time": "1605365247.624045",
+    "url": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
     "Dtection": true,
     "log": [
         {

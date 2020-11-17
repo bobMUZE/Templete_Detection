@@ -9,11 +9,11 @@ MY_DETECT_URL="http://192.168.0.5"
 TEMPLETE_JSON = {'time': '1605365247.624045', 'url': 'http://3.131.17.188/g5', 'module': 1,
                  'filepath': '/home/ubuntu/semicrawling/3.131.17.188/g5/0', 'xpath': '//*[@id="hd"]'}
 XSS_TEMPLETE="""
-<Video> <source onerror = "javascript: alert (XSS)">
+<span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
 
-#MODSEC_LOG_FILE="modsec_audit.log"
-MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
+MODSEC_LOG_FILE="modsec_audit.log"
+#MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
 MUZE_LOG_FILE="muze_log.json"
 
 
@@ -23,12 +23,12 @@ def LastLogFind():
     with open(MODSEC_LOG_FILE,"r",encoding="utf-8") as f:
         modsec_log=f.read()
 
-    p = re.compile('[-]{2}\w{8}[-]{1}\w[-]{2}')
-
-    # modsecurity xss 공격 탐지 로그 찾기
-    m = p.findall(modsec_log)
+    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
+    m=p.findall(modsec_log)
+    offset=modsec_log.find(m[-1])
+    #print(type(m[-1]))
     if m:
-        return m[-1]
+        return m[-1],offset
     else:
         return 0
 
@@ -51,28 +51,14 @@ def TempleteSend(templete):
     #print(response.text)
     return
 
-def XSSLog():
+def XSSLog(log_offset):
     #정규식
     #p = re.compile('\--\w{8}\-H\--')
     # modsecurity 탐지 파싱 부분 정규식
     modsec_log=ModsecLogRead()
-    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
-    xss_log=p.findall(modsec_log)
+    recent_log = modsec_log[log_offset:]
+    return recent_log
 
-    #최신 XSS 로그 찾기
-    latest_xss_log_id=xss_log[-1]
-    #print(latest_xss_log)
-    log_offset = modsec_log.find(latest_xss_log_id)
-    # modsecurity xss 공격 탐지 로그 찾기
-    m = p.search(modsec_log)
-
-    if m:
-        print("--------------------XSS Attack Detection------------------------")
-        #f.seek(log_offset)
-        recent_log=modsec_log[log_offset:]
-        return(recent_log,latest_xss_log_id)
-    else:
-        return 0
 
 def Find_Message_Column(recentLog):
     messageColumnRe = "Message: Warning. Pattern match [\s\S]*?[\\n]"
@@ -110,12 +96,10 @@ def Find_Matched_Info(recentLog,filepath,lastLogId):
 
 def Muze_Log(templete_json,log=None,detection_check=False):
 
-
-
     templete_json["Dtection"] = detection_check
     templete_json["module"] = "XSS_Detection_Server"
     templete_json["log"] = log
-    del templete_json["filepath"]
+
     #print(templete_json)
 
     ## 넘겨줘야하는 딕션너리 최종로그 templete_json
@@ -145,38 +129,39 @@ def Use_Logging(level):
     mylogger.info("logging start!!!")
     return mylogger
 
-def main():
+def main(html,msg_json):
     #최신 로그 번호 찾기
-    last_log_signature = LastLogFind()
-    print(last_log_signature)
+    last_log_id,last_log_offset = LastLogFind()
+    #print(last_log_signature)
 
     #템플릿 전송
-    TempleteSend(XSS_TEMPLETE)
+    TempleteSend(html)
 
     #최신 로그 번호 찾아서 비교후 다르면 공격 탐지
-    last_log_signature = LastLogFind()
-
-    recentLog,latest_log_id=XSSLog()
-    #print(recentLog)
-    #print(latest_xss_log_id)
-
-
-    filepath = TEMPLETE_JSON["filepath"]
-    # 탐지될 때
-    if recentLog!=0:
-
-        log=Find_Matched_Info(recentLog,filepath,latest_log_id)
+    recent_log_id,recent_log_offset = LastLogFind()
+    #print(last_log_id,recent_log_id)
+    filepath = msg_json["filepath"]
+    del msg_json["filepath"]
+    # 탐지될 경우
+    #if (1):
+    if(last_log_id!=recent_log_id):
+        print("attack")
+        recentLog=XSSLog(recent_log_offset)
+        #print(recentLog)
+        log=Find_Matched_Info(recentLog,filepath,recent_log_id)
         #print(log)
         #print(rule_and_string)
-        result=Muze_Log(TEMPLETE_JSON,log,True)
-        #print(result)
+        result=Muze_Log(msg_json,log,True)
 
 
-    # 미탐일 때
+    # 미탐일 경우
     else:
-        pass
+        log = [{"submodule": None, "detection value": None, "filepath": filepath, "detail": None}]
+        result = Muze_Log(msg_json, log, False)
 
-    #로그 저장
+    print(result)
+
+        #로그 저장
     Json_Save(result)
 
 
@@ -184,4 +169,4 @@ if __name__ == '__main__':
     # 로깅 객체 생성
     mylogger = Use_Logging(logging.INFO)
     mylogger.debug('test')
-    main()
+    main(XSS_TEMPLETE,TEMPLETE_JSON)
