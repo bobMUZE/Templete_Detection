@@ -152,7 +152,7 @@ def main(html,msg_json):
         #print(log)
         #print(rule_and_string)
         result=Muze_Log(msg_json,log,True)
-sasdsad
+
 
     # 미탐일 경우
     else:
