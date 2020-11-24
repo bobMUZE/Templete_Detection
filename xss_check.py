@@ -5,7 +5,7 @@ import re
 MY_DETECT_URL="http://192.168.0.5"
 DETECT_URL="http://192.168.0.12"
 MODSEC_FILE="/var/log/apache2/modsec_audit.log"
-
+CHEAT_SHEAT="xss_attack.txt"
 def LastLogFind():
 
     with open(MODSEC_FILE,"r",encoding="utf-8") as f:
@@ -27,7 +27,7 @@ def ModsecLogRead(f):
 
 
 def XSSAtackRead():
-    with open("xss_attack.txt", "r", encoding="utf-8") as f:
+    with open(CHEAT_SHEAT, "r", encoding="utf-8") as f:
         xss_attacks=f.readlines()
         #print(xss_attacks)
         return xss_attacks
@@ -42,7 +42,7 @@ def TempleteSelect():
 def AttackSend(attacks,last_sig):
     for attack in attacks:
         params = {"attack": attack}
-        response = requests.get(DETECT_URL, params=params)
+        #response = requests.get(DETECT_URL, params=params)
         response = requests.get(MY_DETECT_URL, params=params)
         #mylogger.debug(response.text)
         recent_sig=LastLogFind()
