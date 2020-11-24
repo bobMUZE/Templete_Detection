@@ -2,10 +2,10 @@ import requests
 import logging
 import re
 
-MY_DETECT_URL="http://192.168.0.5"
-DETECT_URL="http://192.168.0.12"
+DETECT_URL="http://192.168.0.5"
 MODSEC_FILE="/var/log/apache2/modsec_audit.log"
 CHEAT_SHEAT="xss_attack.txt"
+
 def LastLogFind():
 
     with open(MODSEC_FILE,"r",encoding="utf-8") as f:
@@ -27,41 +27,59 @@ def ModsecLogRead(f):
 
 
 def XSSAtackRead():
-    with open(CHEAT_SHEAT, "r", encoding="utf-8") as f:
+    with open(CHEAT_SHEAT,"r",encoding="utf-8") as f:
         xss_attacks=f.readlines()
-        #print(xss_attacks)
         return xss_attacks
 
 
 
+def XSSLog(modsec_log,f):
+    #정규식
+    #p = re.compile('\--\w{8}\-H\--')
+    # modsecurity 탐지 파싱 부분 정규식
+    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
+
+    # modsecurity xss 공격 탐지 로그 찾기
+    m = p.search(modsec_log)
+
+    if m:
+        print("--------------------XSS Attack Detection------------------------")
+        f.seek(m.end())
+        detect_log=f.read()
+        print(detect_log)
+
+    else:
+        print("------------------------ No XSS Attack -------------------------")
+
 def TempleteSelect():
-    with open("txt/templete.txt", "r", encoding="utf-8") as f:
+    with open("templete.txt","r",encoding="utf-8") as f:
         templete=f.read()
         return templete
 
 def AttackSend(attacks,last_sig):
+    f= open("no_detection_attack.txt","a",encoding="utf-8")
+        
     for attack in attacks:
+        print(attack)
         params = {"attack": attack}
-        #response = requests.get(DETECT_URL, params=params)
-        response = requests.get(MY_DETECT_URL, params=params)
+        response = requests.get(DETECT_URL, params=params)
         #mylogger.debug(response.text)
         recent_sig=LastLogFind()
         if last_sig==recent_sig:
             print("No Detection")
-            #f.write(attack)
+            f.write(attack)
             print(last_sig,recent_sig)
-
             mylogger.debug(attack)
 
-            break
+            #break
         else:
             print("Detection")
             print(last_sig,recent_sig)
-            last_sig=recent_sig
+            
             mylogger.debug(attack)
-            #last_sig=recent_sig
+            last_sig=recent_sig
         #return
-
+    f.close()
 
 # 로깅 함수
 def Use_Logging(level):
