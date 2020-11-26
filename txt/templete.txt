@@ -1,1 +1,1 @@
-<Video> <source onerror = "javascript: alert (XSS)">
+<img src=xss onerror=alert(1)>

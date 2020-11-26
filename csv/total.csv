@@ -6996,6 +6996,7 @@ onfocusout,xmp
 onhashchange,body
 onload,body
 onload,embed
+onload,frameset
 onload,frame
 onload,iframe
 onload,image

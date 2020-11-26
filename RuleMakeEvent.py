@@ -23,7 +23,7 @@ def MakeRegex():
                 tag_or=tag_or[1:]
 
             #regex=f"(?i)([<＜]({tag_or})[ /])[\s\S]*?({event_check})[\s\S]*?[>＞]"
-            regex = f"(?i)([ <＜]({tag_or})[\s *?\ /])[\s\S] * ?({event_check})[\s\S] * ?[ >＞]"
+            regex = f"(?i)([<＜]({tag_or})[ ,/])[\s\S]*?({event_check})[\s\S]*?[>＞]"
             #print(regex)
             #return
             event_check=event
@@ -32,7 +32,7 @@ def MakeRegex():
         else:
             tag_or+="|"+tag
             #print(event)
-    regex = f"(?i)([<＜]({tag_or})[ /])[\s\S]*?({event_check})[\s\S]*?[>＞]"
+    regex = f"(?i)([<＜]({tag_or})[ ,/])[\s\S]*?({event_check})[\s\S]*?[>＞]"
     f.close()
     yield regex
 
