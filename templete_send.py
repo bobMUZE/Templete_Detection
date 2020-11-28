@@ -5,7 +5,7 @@ import re
 #DETECT_URL="http://210.117.90.186/"
 MY_DETECT_URL="http://192.168.0.5"
 TEMPLETE="""
-<handler xmlns:ev="http://www.w3.org/2001/xml-events" ev:event="load">alert(94)</handler>
+<article xmlns ="urn:img src=x onerror=xss()//" >xss
 """
 
 def ModsecLogRead(f):

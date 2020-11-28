@@ -6539,6 +6539,7 @@ onend,set
 onended,audio
 onended,video
 onerror,audio
+onerror,article
 onerror,body
 onerror,embed
 onerror,image
