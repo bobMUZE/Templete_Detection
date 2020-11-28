@@ -6544,6 +6544,7 @@ onerror,embed
 onerror,image
 onerror,image2
 onerror,image3
+onerror,li
 onerror,img
 onerror,img2
 onerror,input
@@ -7022,6 +7023,8 @@ onloadend,image2
 onloadend,img
 onloadend,img2
 onloadend,input
+onloadstart,audio
+onloadstart,video
 onloadstart,image
 onloadstart,image2
 onloadstart,img
