@@ -3,7 +3,7 @@ import logging
 import re
 import json
 DETECT_URL = "http://192.168.0.5"
-MODSEC_FILE = "modsec_audit.log"
+MODSEC_FILE = "/var/log/apache2/modsec_audit.log"
 TEMPLETE_SHEAT = "bravotec_content.json"
 
 
@@ -40,30 +40,12 @@ def TempleteRead():
         return result
 
 
-def XSSLog(modsec_log, f):
-    # 정규식
-    # p = re.compile('\--\w{8}\-H\--')
-    # modsecurity 탐지 파싱 부분 정규식
-    p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
-
-    # modsecurity xss 공격 탐지 로그 찾기
-    m = p.search(modsec_log)
-
-    if m:
-        print("--------------------XSS Attack Detection------------------------")
-        f.seek(m.end())
-        detect_log = f.read()
-        print(detect_log)
-
-    else:
-        print("------------------------ No XSS Attack -------------------------")
-
 
 def TempleteSend(templetes, last_sig):
     f = open("attack_detection.txt", "a", encoding="utf-8")
 
     for templete in templetes:
-        print(templete)
+        #print(templete)
         params = {"templete": templete}
         response = requests.get(DETECT_URL, params=params)
         # mylogger.debug(response.text)
@@ -78,9 +60,13 @@ def TempleteSend(templetes, last_sig):
         else:
             print("Detection")
             print(last_sig, recent_sig)
-            f.write(templete)
-            mylogger.debug(templete)
+            tmp={"detection":templete}
+            json.dump(tmp,f)
+            f.write("\n")
+            #f.write(templete)
+            #mylogger.debug(templete)
             last_sig = recent_sig
+            #break
         # return
     f.close()
 
