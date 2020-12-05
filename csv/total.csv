@@ -426,7 +426,6 @@ onbeforepaste,xmp
 onchange,input
 onchange,select
 onchange,textarea
-onclick,a
 onclick,abbr
 onclick,acronym
 onclick,address

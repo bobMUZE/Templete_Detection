@@ -47,7 +47,7 @@ def TempleteSend(templetes, last_sig):
     for templete in templetes:
         #print(templete)
         params = {"templete": templete}
-        response = requests.get(DETECT_URL, params=params)
+        response = requests.post(DETECT_URL, data=params)
         # mylogger.debug(response.text)
         recent_sig = LastLogFind()
         if last_sig == recent_sig:

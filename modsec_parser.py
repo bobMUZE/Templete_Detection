@@ -46,7 +46,7 @@ def TempleteSend(templete):
     params={"templete":templete}
     print(templete)
     #url=DETECT_URL+templete
-    response = requests.get(MY_DETECT_URL,params=params)
+    response = requests.post(MY_DETECT_URL,data=params)
     #response = requests.get(DETECT_URL, params=params)
     #print(response.text)
     return
