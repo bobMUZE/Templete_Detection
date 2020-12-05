@@ -4,7 +4,7 @@ import re
 import json
 DETECT_URL = "http://192.168.0.5"
 MODSEC_FILE = "/var/log/apache2/modsec_audit.log"
-TEMPLETE_SHEAT = "bravotec_content.json"
+TEMPLETE_SHEAT = "naver_blog_content.json"
 
 
 def LastLogFind():
