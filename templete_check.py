@@ -2,6 +2,7 @@ import requests
 import logging
 import re
 import json
+import time
 DETECT_URL = "http://192.168.0.5"
 MODSEC_FILE = "/var/log/apache2/modsec_audit.log"
 TEMPLETE_SHEAT = "naver_blog_content.json"
@@ -42,12 +43,13 @@ def TempleteRead():
 
 
 def TempleteSend(templetes, last_sig):
-    f = open("attack_detection.txt", "a", encoding="utf-8")
+    f = open("attack_detection.json", "a", encoding="utf-8")
 
     for templete in templetes:
         #print(templete)
         params = {"templete": templete}
         response = requests.post(DETECT_URL, data=params)
+        time.sleep(0.5)
         # mylogger.debug(response.text)
         recent_sig = LastLogFind()
         if last_sig == recent_sig:

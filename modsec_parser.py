@@ -6,8 +6,12 @@ import requests
 
 MY_DETECT_URL="http://192.168.0.5"
 
-TEMPLETE_JSON = {'time': '1605365247.624045', 'url': 'http://3.131.17.188/g5', 'module': 1,
-                 'filepath': '/home/ubuntu/semicrawling/3.131.17.188/g5/0', 'xpath': '//*[@id="hd"]'}
+TEMPLETE_JSON = {'time': '1605365247.624045',
+                 'url': 'http://3.131.17.188/g5', 'module': 1,
+                 'filepath': '/home/ubuntu/semicrawling/3.131.17.188/g5/0',
+                 'xpath': '//*[@id="hd"]',
+                 'response':"200"
+                 }
 XSS_TEMPLETE="""
 <span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
