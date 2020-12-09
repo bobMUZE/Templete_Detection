@@ -32,6 +32,7 @@ def LastLogFind():
     offset=modsec_log.find(m[-1])
     #print(type(m[-1]))
     if m:
+        offset = modsec_log.find(m[-1])
         return m[-1],offset
     else:
         return 0
