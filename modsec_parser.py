@@ -16,8 +16,8 @@ XSS_TEMPLETE="""
 <span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
 
-MODSEC_LOG_FILE="modsec_audit.log"
-#MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
+#MODSEC_LOG_FILE="modsec_audit.log"
+MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
 MUZE_LOG_FILE="muze_log.json"
 
 
@@ -29,7 +29,7 @@ def LastLogFind():
 
     p = re.compile('[-]{2}\w{8}[-]{1}H[-]{2}')
     m=p.findall(modsec_log)
-    offset=modsec_log.find(m[-1])
+    #offset=modsec_log.find(m[-1])
     #print(type(m[-1]))
     if m:
         offset = modsec_log.find(m[-1])
