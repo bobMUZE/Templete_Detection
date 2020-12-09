@@ -70,26 +70,29 @@ def Find_Message_Column(recentLog):
     messages = p.findall(recentLog)
     return messages
 
-def Find_Matched_Pattrn(message):
-    matchedPatternRe="Pattern match \"[\s\S]*?\" at ARGS:"
+def Find_Matched_RuleID(message):
+    matchedPatternRe="\\[id \"([\S]*?)\"\\]"
     p = re.compile(matchedPatternRe)
-    matchedPattern = p.findall(message)
-    return matchedPattern[0][15:-10]
+    matchedPattern = p.search(message)
+    return matchedPattern.group(1)
 
 def Find_Matched_Data(message):
-    matchedDataRe="\\[data \"Matched Data: [\s\S]*?found within ARGS:"
+    matchedDataRe="\\[data \"Matched Data: ([\s\S]*?)found within ARGS:"
     #print(matchedDataRe)
     p = re.compile(matchedDataRe)
-    matchedData = p.findall(message)
-    #print(matchedData[0])
-    return matchedData[0][21:-19]
+    matchedData = p.search(message)
+    #print("##")
+    #print(matchedData.group(1))
+    return matchedData.group(1)
+    #print("##")
+    #return matchedData[0][21:-19]
 
 def Find_Matched_Info(recentLog,filepath,lastLogId):
     messages=Find_Message_Column(recentLog)
     result=[]
     for message in messages:
         tmp_dict={}
-        tmp_dict["submodule"]=Find_Matched_Pattrn(message)
+        tmp_dict["submodule"]=Find_Matched_RuleID(message)
         tmp_dict["detection value"]=Find_Matched_Data(message)
         tmp_dict["filepath"] = filepath
         tmp_dict["detail"] = lastLogId
@@ -100,7 +103,7 @@ def Find_Matched_Info(recentLog,filepath,lastLogId):
 
 def Muze_Log(templete_json,log=None,detection_check=False):
 
-    templete_json["Dtection"] = detection_check
+    templete_json["Detection"] = detection_check
     templete_json["module"] = "XSS_Detection_Server"
     templete_json["log"] = log
 
@@ -147,8 +150,8 @@ def main(html,msg_json):
     filepath = msg_json["filepath"]
     del msg_json["filepath"]
     # 탐지될 경우
-    #if (1):
-    if(last_log_id!=recent_log_id):
+    if (1):
+    #if(last_log_id!=recent_log_id):
         print("attack")
         recentLog=XSSLog(recent_log_offset)
         #print(recentLog)
@@ -164,9 +167,10 @@ def main(html,msg_json):
         result = Muze_Log(msg_json, log, False)
 
     print(result)
+    return result
 
         #로그 저장
-    Json_Save(result)
+    #Json_Save(result)
 
 
 if __name__ == '__main__':
