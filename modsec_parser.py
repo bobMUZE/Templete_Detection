@@ -151,8 +151,8 @@ def main(html,msg_json):
     filepath = msg_json["filepath"]
     del msg_json["filepath"]
     # 탐지될 경우
-    if (1):
-    #if(last_log_id!=recent_log_id):
+    #if (1):
+    if(last_log_id!=recent_log_id):
         print("attack")
         recentLog=XSSLog(recent_log_offset)
         #print(recentLog)
