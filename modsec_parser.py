@@ -167,11 +167,12 @@ def main(html,msg_json):
         log = [{"submodule": None, "detection value": None, "filepath": filepath, "detail": None}]
         result = Muze_Log(msg_json, log, False)
 
-    print(result)
+    #print(result)
+    Json_Save(result)
     return result
 
         #로그 저장
-    #Json_Save(result)
+
 
 
 if __name__ == '__main__':
