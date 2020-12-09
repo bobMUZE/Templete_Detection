@@ -35,7 +35,7 @@ def LastLogFind():
         offset = modsec_log.find(m[-1])
         return m[-1],offset
     else:
-        return 0
+        return 0,None
 
 def ModsecLogRead():
     with open(MODSEC_LOG_FILE,"r",encoding="utf-8") as f:
@@ -47,7 +47,7 @@ def ModsecLogRead():
 
 def TempleteSend(templete):
     #templete="test"
-    mylogger.info("Send Templete!!!")
+    #mylogger.info("Send Templete!!!")
     params={"templete":templete}
     print(templete)
     #url=DETECT_URL+templete
