@@ -19,4 +19,166 @@
             "detail": "--2259ed76-H--"
         }
     ]
+}{
+    "time": "1605365247.624045",
+    "url": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "response": "200",
+    "detection": false,
+    "log": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "time": "1605365247.624045",
+    "url": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "response": "200",
+    "detection": false,
+    "log": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "time": "1605365247.624045",
+    "url": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "response": "200",
+    "detection": false,
+    "log": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "response": "200",
+    "detection": false,
+    "log": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": "1.624045",
+    "response": "200",
+    "detection": false,
+    "logdata": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": "1.624045",
+    "status_code": "200",
+    "detection": false,
+    "logdata": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": "0.624045",
+    "status_code": "200",
+    "detection": false,
+    "logdata": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": "0.624045",
+    "status_code": "200",
+    "detection": true,
+    "logdata": [
+        {
+            "submodule": "941110",
+            "detection value": "<script> ",
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": "--2259ed76-H--"
+        },
+        {
+            "submodule": "941160",
+            "detection value": "<script ",
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": "--2259ed76-H--"
+        }
+    ]
+}{
+    "timestamp": "1605365247.624045",
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": "0.624045",
+    "status_code": "200",
+    "detection": false,
+    "logdata": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
+}{
+    "timestamp": 1605365247.624045,
+    "URL": "http://3.131.17.188/g5",
+    "module": "XSS_Detection_Server",
+    "xpath": "//*[@id=\"hd\"]",
+    "request_time": 0.624045,
+    "status_code": 200,
+    "detection": false,
+    "logdata": [
+        {
+            "submodule": null,
+            "detection value": null,
+            "filepath": "/home/ubuntu/semicrawling/3.131.17.188/g5/0",
+            "detail": null
+        }
+    ]
 }

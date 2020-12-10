@@ -3,21 +3,23 @@ import logging
 import os
 import json
 import requests
+import pymongo
 
 MY_DETECT_URL="http://192.168.0.5"
 
-TEMPLETE_JSON = {'time': '1605365247.624045',
-                 'url': 'http://3.131.17.188/g5', 'module': 1,
+TEMPLETE_JSON = {'timestamp': 1605365247.624045,
+                 'URL': 'http://3.131.17.188/g5', 'module': 1,
                  'filepath': '/home/ubuntu/semicrawling/3.131.17.188/g5/0',
                  'xpath': '//*[@id="hd"]',
-                 'response':"200"
+                 'request_time':0.624045,
+                 'status_code':200
                  }
 XSS_TEMPLETE="""
 <span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
 
-#MODSEC_LOG_FILE="modsec_audit.log"
-MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
+MODSEC_LOG_FILE="modsec_audit.log"
+#MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
 MUZE_LOG_FILE="muze_log.json"
 
 
@@ -84,7 +86,10 @@ def Find_Matched_Data(message):
     matchedData = p.search(message)
     #print("##")
     #print(matchedData.group(1))
-    return matchedData.group(1)
+    try:
+        return matchedData.group(1)
+    except:
+        print(message)
     #print("##")
     #return matchedData[0][21:-19]
 
@@ -104,9 +109,9 @@ def Find_Matched_Info(recentLog,filepath,lastLogId):
 
 def Muze_Log(templete_json,log=None,detection_check=False):
 
-    templete_json["Detection"] = detection_check
+    templete_json["detection"] = detection_check
     templete_json["module"] = "XSS_Detection_Server"
-    templete_json["log"] = log
+    templete_json["logdata"] = log
 
     #print(templete_json)
 
@@ -167,7 +172,7 @@ def main(html,msg_json):
         log = [{"submodule": None, "detection value": None, "filepath": filepath, "detail": None}]
         result = Muze_Log(msg_json, log, False)
 
-    #print(result)
+    print(result)
     Json_Save(result)
     return result
 
