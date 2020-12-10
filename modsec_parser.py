@@ -18,8 +18,8 @@ XSS_TEMPLETE="""
 <span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
 
-MODSEC_LOG_FILE="modsec_audit.log"
-#MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
+#MODSEC_LOG_FILE="modsec_audit.log"
+MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
 MUZE_LOG_FILE="muze_log.json"
 
 
@@ -80,18 +80,24 @@ def Find_Matched_RuleID(message):
     return matchedPattern.group(1)
 
 def Find_Matched_Data(message):
-    matchedDataRe="\\[data \"Matched Data: ([\s\S]*?)found within ARGS:"
+    matchedDataRe="\\[data \"Matched Data: ([^\]]*)\\]"
     #print(matchedDataRe)
     p = re.compile(matchedDataRe)
     matchedData = p.search(message)
     #print("##")
-    #print(matchedData.group(1))
-    try:
-        return matchedData.group(1)
-    except:
-        print(message)
-    #print("##")
-    #return matchedData[0][21:-19]
+    long_string = matchedData.group(1)
+    str_idex = long_string.find("found within ARGS:templete:")
+    #탐지 문자열이 짧을 때
+    if str_idex != -1:
+
+        short_string=long_string.find("found within ARGS:templete:")
+        #print(long_string)
+        #print(long_string[:str_idex])
+        result =long_string[:str_idex]
+    # 탐지 문자열이 길때
+    else:
+        result=long_string[:-1]
+    print(result)
 
 def Find_Matched_Info(recentLog,filepath,lastLogId):
     messages=Find_Message_Column(recentLog)
@@ -111,7 +117,8 @@ def Muze_Log(templete_json,log=None,detection_check=False):
 
     templete_json["detection"] = detection_check
     templete_json["module"] = "XSS_Detection_Server"
-    templete_json["logdata"] = log
+    if log:
+        templete_json["logdata"] = log
 
     #print(templete_json)
 
@@ -158,22 +165,22 @@ def main(html,msg_json):
     # 탐지될 경우
     #if (1):
     if(last_log_id!=recent_log_id):
-        print("attack")
+
         recentLog=XSSLog(recent_log_offset)
         #print(recentLog)
         log=Find_Matched_Info(recentLog,filepath,recent_log_id)
         #print(log)
         #print(rule_and_string)
-        result=Muze_Log(msg_json,log,True)
+        result=Muze_Log(msg_json,log,detection_check=True)
 
 
     # 미탐일 경우
     else:
-        log = [{"submodule": None, "detection value": None, "filepath": filepath, "detail": None}]
-        result = Muze_Log(msg_json, log, False)
+        #log = [{"submodule": None, "detection value": None, "filepath": filepath, "detail": None}]
+        result = Muze_Log(msg_json,detection_check= False)
 
     print(result)
-    Json_Save(result)
+    #Json_Save(result)
     return result
 
         #로그 저장
