@@ -12,14 +12,15 @@ TEMPLETE_JSON = {'timestamp': 1605365247.624045,
                  'filepath': '/home/ubuntu/semicrawling/3.131.17.188/g5/0',
                  'xpath': '//*[@id="hd"]',
                  'request_time':0.624045,
-                 'status_code':200
+                 'status_code':200,
+                 'progress':1
                  }
 XSS_TEMPLETE="""
 <span>DSD 파일을 갖고 계신 분들은 <em>DSF</em>, DFF 확장자 명이 2개인 것을 알고 계실 겁니다. 그런데 왜 두 종류의 파일로 되어 있는지를 알 수가 없겠다구요?</span>
 """
 
-#MODSEC_LOG_FILE="modsec_audit.log"
-MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
+MODSEC_LOG_FILE="modsec_audit.log"
+#MODSEC_LOG_FILE="/var/log/apache2/modsec_audit.log"
 MUZE_LOG_FILE="muze_log.json"
 
 
